@@ -57,9 +57,6 @@ include('verificar_login.php');
                             Idade
                           </th>
                           <th>
-                            Data Nascimento
-                          </th>
-                          <th>
                             CPF
                           </th>
                           <th>
@@ -67,19 +64,7 @@ include('verificar_login.php');
                           </th>
                           <th>
                             Cidade
-                          </th>
-                          <th>
-                            Bairro
-                          </th>
-                          <th>
-                            Endereço
-                          </th>
-                           <th>
-                            Email
-                          </th>
-                          <th>
-                            Data Cadastro
-                          </th>
+                          </th> 
                         </thead>
                         <tbody>
                          
@@ -106,43 +91,23 @@ include('verificar_login.php');
               <form method="POST" action="">
               <div class="form-group">
                 <label for="id_produto">Nome</label>
-                <input type="text" class="form-control mr-2" name="txtnome" placeholder="Nome" required>
+                <input type="text" class="form-control mr-2" name="idnome" placeholder="Nome" required>
               </div>
               <div class="form-group">
                 <label for="id_produto">Idade</label>
-                <input type="text" class="form-control mr-2" name="txtidade" placeholder="Idade" required>
-              </div>
-              <div class="form-group">
-                <label for="id_produto">Data De Nascimento</label>
-                <input type="text" class="form-control mr-2" name="txtnascimento" placeholder="datanascimento" required>
+                <input type="text" class="form-control mr-2" name="ididade" placeholder="Idade" required>
               </div>
               <div class="form-group">
                 <label for="fornecedor">CPF</label>
-                 <input type="text" class="form-control mr-2" name="txtcpf" placeholder="CPF" required>
+                 <input type="text" class="form-control mr-2" name="idcpf" placeholder="CPF" required>
               </div>
               <div class="form-group">
                 <label for="id_produto">Telefone</label>
-                <input type="text" class="form-control mr-2" name="txttelefone" placeholder="Telefone" required>
+                <input type="text" class="form-control mr-2" name="idtelefone" placeholder="Telefone" required>
               </div>
               <div class="form-group">
                 <label for="quantidade">Cidade</label>
-                <input type="text" class="form-control mr-2" name="txtcidade" placeholder="Cidade" required>
-              </div>
-              <div class="form-group">
-                <label for="quantidade">Bairro</label>
-                <input type="text" class="form-control mr-2" name="txtbairro" placeholder="Bairro" required>
-              </div>
-              <div class="form-group">
-                <label for="quantidade">Endereço</label>
-                <input type="text" class="form-control mr-2" name="txtendereco" placeholder="Endereço" required>
-              </div>
-               <div class="form-group">
-                <label for="fornecedor">Email</label>
-                 <input type="text" class="form-control mr-2" name="txtemail" placeholder="Email" required>
-              </div>
-              <div class="form-group">
-                <label for="quantidade">Data de Cadastro</label>
-                <input type="text" class="form-control mr-2" name="txtdataCad" placeholder="datacad" required>
+                <input type="text" class="form-control mr-2" name="idcidade" placeholder="Cidade" required>
               </div>
             </div>       
             <div class="modal-footer">
@@ -159,18 +124,14 @@ include('verificar_login.php');
 
 <?php
 if(isset($_POST['Salvar'])){
-$nome = $_POST['txtnome'];
-$idade = $_POST['txtidade'];
-$nascimento = $_POST['txtnascimento'];
-$cpf = $_POST['txtcpf'];
-$telefone = $_POST['txttelefone'];
-$cidade = $_POST['txtcidade'];
-$bairro = $_POST['txtbairro'];
-$endereco = $_POST['txtendereco'];
-$email = $_POST['txtemail'];
-$datacad = $_POST['txtdataCad'];
+$nome = $_POST['idnome'];
+$idade = $_POST['ididade'];
+$cpf = $_POST['idcpf'];
+$telefone = $_POST['idtelefone'];
+$cidade = $_POST['idcidade'];
 
-$query = "INSERT INTO clientes (nome, idade, nascimento, cpf, telefone, cidade, bairro, endereco, email, datcad) VALUES ('$nome', '$idade', '$nascimento', '$cpf', '$telefone', '$cidade', '$bairro', '$endereco', '$email', curDate() )";
+
+$query = "INSERT INTO clientes (nome, idade, cpf, telefone, cidade) VALUES ('$nome', '$idade', '$cpf', '$telefone', '$cidade')";
 $result = mysqli_query($conexao, $query);
 if($result == ''){
   echo "<script language='javascript'>window.alert('Ocorreu um Erro ao Cadastrar'); </script>";
